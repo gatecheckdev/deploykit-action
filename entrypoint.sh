@@ -5,4 +5,13 @@
 
 ls -laH
 
-git config --list
+deploykit deploy kustomize \
+    --attempts $INPUTS_ATTEMPTS \
+    --backoff-method $INPUTS_BACKOFF_METHOD \
+    --directory . \
+    --image $INPUTS_IMAGE \
+    --message $INPUTS_MESSAGE \
+    --repository $INPUTS_REPOSITORY \
+    --directory $INPUTS_DIRECTORY \
+    --service $INPUTS_SERVICE \
+    --service-directory $INPUTS_SERVICE_DIRECTORY
