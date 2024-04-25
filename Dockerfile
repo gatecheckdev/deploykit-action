@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 RUN apt update && \
-    apt install git
+    apt install -y git
 
 COPY entrypoint.sh /entrypoint.sh
 
