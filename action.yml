@@ -1,18 +1,18 @@
 name: GitOps DeployKit
 description: GitOps Style Manifest update with Kustomize
 inputs:
-  manifest-user:
+  manifest_user:
     description: "The manifest user for the image update commit"
     default: "github-actions[bot]"
-  manifest-email:
+  manifest_email:
     description: "The manifest user email for the image update commit"
     default: "github-actions[bot]@users.noreply.github.com"
-  manifest-deploy-token:
+  manifest_deploy_token:
     description: "The manifest token to use during ssh cloning"
   attempts:
     description: "The number of times to try pushing the image update commit"
     default: "3"
-  backoff-method:
+  backoff_method:
     description: "the algorithm used to determine the wait duration between retry attempts"
     default: "random"
   image:
@@ -23,7 +23,7 @@ inputs:
   service:
     description: "the destination service for the kustomize command"
     required: true
-  service-directory:
+  service_directory:
     description: "the sub-directory (or environment) where the target kustomization.yaml file is located"
     default: "."
 runs:
@@ -31,10 +31,9 @@ runs:
   image: Dockerfile
   env:
     DK_ATTEMPTS: ${{ inputs.attempts }}
-    DK_BACKOFF_METHOD: ${{ inputs.backoff-method }}
+    DK_BACKOFF_METHOD: ${{ inputs.backoff_method }}
     DK_IMAGE: ${{ inputs.image }}
     DK_MESSAGE: ${{ inputs.message }}
     DK_SERVICE: ${{ inputs.service }}
-    DK_SERVICE_DIRECTORY: ${{ inputs.service-directory }}
+    DK_SERVICE_DIRECTORY: ${{ inputs.service_directory }}
     DK_DIRECTORY: "."
-    DEPLOY_TOKEN: ${{ inputs.manifest-deploy-token }}

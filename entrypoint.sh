@@ -1,13 +1,13 @@
 #!/bin/sh
 
 echo "[INFO] Configure Git Settings"
-git config --global user.name $DK_MANIFEST_USER
-git config --global user.email $DK_MANIFEST_EMAIL
+git config --global user.name $INPUTS_MANIFEST_USER
+git config --global user.email $INPUTS_MANIFEST_EMAIL
 git config --global --add safe.directory /github/workspace
 
 # Create a temporary file
 key_file=$(mktemp)
-echo "$DEPLOY_TOKEN" > "$key_file"
+echo "$INPUTS_MANIFEST_DEPLOY_TOKEN" > "$key_file"
 
 # Set the permissions for the key file to be read-only by the owner
 chmod 600 "$key_file"
