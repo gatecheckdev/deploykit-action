@@ -7,6 +7,8 @@ inputs:
   manifest-email:
     description: "The manifest user email for the image update commit"
     default: "github-actions[bot]@users.noreply.github.com"
+  manifest-deploy-token:
+    description: "The manifest token to use during ssh cloning"
   attempts:
     description: "The number of times to try pushing the image update commit"
     default: "3"

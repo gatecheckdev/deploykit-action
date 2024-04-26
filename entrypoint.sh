@@ -3,7 +3,7 @@
 # git config --global user.name $DK_MANIFEST_USER
 # git config --global user.email $DK_MANIFEST_EMAIL
 git config --global --add safe.directory /github/workspace
-export GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+export GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i <(echo \$INPUT_MANIFEST_DEPLOY_TOKEN)"
 
 echo "[INFO] List manifest directory"
 
