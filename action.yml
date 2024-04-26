@@ -27,3 +27,10 @@ inputs:
 runs:
   using: docker
   image: Dockerfile
+  env:
+    DK_ATTEMPTS: ${{ inputs.attempts }}
+    DK_BACKOFF_METHOD: ${{ inputs.backoff-method }}
+    DK_IMAGE: ${{ inputs.image }}
+    DK_MESSAGE: ${{ inputs.message }}
+    DK_SERVICE: ${{ inputs.service }}
+    DK_SERVICE_DIRECTORY: ${{ inputs.service-directory }}

@@ -5,7 +5,7 @@ RUN apt update && \
 
 FROM base as deploykit
 
-RUN curl -L https://github.com/gatecheckdev/deploykit/releases/download/v0.1.1/deploykit_0.1.1_linux_amd64.tar.gz | tar xz && \
+RUN curl -L https://github.com/gatecheckdev/deploykit/releases/download/v0.1.2/deploykit_0.1.2_linux_amd64.tar.gz | tar xz && \
     mv ./deploykit /usr/local/bin/
 
 FROM base as kustomize
