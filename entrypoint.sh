@@ -7,12 +7,10 @@ git config --global --add safe.directory /github/workspace
 
 # Create a temporary file
 key_file=$(mktemp)
-echo "$INPUT_MANIFEST_DEPLOY_TOKEN" > "$key_file"
+echo "$DEPLOY_TOKEN" > "$key_file"
 
 # Set the permissions for the key file to be read-only by the owner
 chmod 600 "$key_file"
-
-cat "$key_file"
 
 # Set GIT_SSH_COMMAND to use the temporary file
 export GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i $key_file"
