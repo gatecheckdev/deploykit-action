@@ -34,3 +34,4 @@ runs:
     DK_MESSAGE: ${{ inputs.message }}
     DK_SERVICE: ${{ inputs.service }}
     DK_SERVICE_DIRECTORY: ${{ inputs.service-directory }}
+    DK_DIRECTORY: "."
