@@ -1,39 +1,47 @@
-name: GitOps DeployKit
+name: GitOps Deploykit
 description: GitOps Style Manifest update with Kustomize
 inputs:
-  manifest_user:
-    description: "The manifest user for the image update commit"
-    default: "github-actions[bot]"
-  manifest_email:
-    description: "The manifest user email for the image update commit"
-    default: "github-actions[bot]@users.noreply.github.com"
-  manifest_deploy_token:
-    description: "The manifest token to use during ssh cloning"
-  attempts:
-    description: "The number of times to try pushing the image update commit"
-    default: "3"
-  backoff_method:
-    description: "the algorithm used to determine the wait duration between retry attempts"
-    default: "random"
-  image:
-    description: "The container image name to use in the kustomize command"
-    required: true
-  message:
-    description: "A custom message to use for the image update commit"
-  service:
-    description: "the destination service for the kustomize command"
-    required: true
-  service_directory:
-    description: "the sub-directory (or environment) where the target kustomization.yaml file is located"
-    default: "."
+    attempts:
+        description: Number of git push retry attempts
+        default: 3
+    backoff_method:
+        description: the algorithm used to determine how long to wait before retry [exponential|random]
+        default: random
+    directory:
+        description: The directory of an existing repository
+        default: ""
+        required: true
+    image:
+        description: The container image name to use in the kustomize command
+        default: ""
+        required: true
+    message:
+        description: override the default git commit message
+        default: 'deploykit: push IMAGE to SERVICE in SDIR'
+    repository:
+        description: The directory of an existing repository
+        default: ""
+        required: true
+    service:
+        description: the destination service for the kustomize command
+        default: ""
+        required: true
+    service_directory:
+        description: The sub-directory (or environment) where the target kustomization.yaml file is located
+        default: ""
+    skip_push:
+        description: Do the update but do not push commit
+        default: false
 runs:
-  using: docker
-  image: Dockerfile
-  env:
-    DK_ATTEMPTS: ${{ inputs.attempts }}
-    DK_BACKOFF_METHOD: ${{ inputs.backoff_method }}
-    DK_IMAGE: ${{ inputs.image }}
-    DK_MESSAGE: ${{ inputs.message }}
-    DK_SERVICE: ${{ inputs.service }}
-    DK_SERVICE_DIRECTORY: ${{ inputs.service_directory }}
-    DK_DIRECTORY: "."
+    using: docker
+    image: Dockerfile
+    env:
+        attempts: ${{ inputs.attempts }}
+        backoff_method: ${{ inputs.backoff_method }}
+        directory: ${{ inputs.directory }}
+        image: ${{ inputs.image }}
+        message: ${{ inputs.message }}
+        repository: ${{ inputs.repository }}
+        service: ${{ inputs.service }}
+        service_directory: ${{ inputs.service_directory }}
+        skip_push: ${{ inputs.skip_push }}
