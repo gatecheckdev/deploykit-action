@@ -8,7 +8,9 @@ on:
 jobs:
   image_delivery:
     runs-on: ubuntu-latest
-    name: Build Image with Docker Action
+    name: Build + Push Image
+    permissions:
+      packages: write
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
