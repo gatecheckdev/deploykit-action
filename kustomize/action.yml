@@ -13,6 +13,8 @@ inputs:
     image:
         description: The container image name to use in the kustomize command
         required: true
+    manifest_deploy_token:
+        description: The token used to read/write to the manifest repository
     message:
         description: override the default git commit message
         default: 'deploykit: push IMAGE to SERVICE in SDIR'

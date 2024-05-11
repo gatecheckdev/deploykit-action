@@ -5,6 +5,8 @@ A simple Action that uses the [DeployKit](https://github.com/gatecheckdev/deploy
 
 ## Inputs
 
+Note: `manifest_deploy_token` should be an ssh token for private repositories
+
 |       NAME       | FIELD TYPE |            DEFAULT             |     FLAG NAME     |   ENV VARIABLE KEY   | REQUIRED |
 |------------------|------------|--------------------------------|-------------------|----------------------|----------|
 | Directory        | string     |                                | directory         | DK_DIRECTORY         | Y*       |
