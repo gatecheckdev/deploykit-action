@@ -15,6 +15,14 @@ inputs:
         required: true
     manifest_deploy_token:
         description: The token used to read/write to the manifest repository
+    manifest_email:
+        description: The email set for git when commiting to the manifest repo
+        default: github-actions[bot]@users.noreply.github.com
+        required: true
+    manifest_user:
+        description: The user set for git when commiting to the manifest repo
+        default: github-actions[bot]
+        required: true
     message:
         description: override the default git commit message
         default: 'deploykit: push IMAGE to SERVICE in SDIR'
